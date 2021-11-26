@@ -4,3 +4,14 @@ type User {
   email: String!
   role: String!
 }
+
+input InputCredentials {
+  email: String!
+  password: String!
+}
+
+type LoginUserResponse {
+  message: String!
+  token: String!
+  status: User!
+}
