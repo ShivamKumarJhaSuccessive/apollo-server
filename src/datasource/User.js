@@ -12,6 +12,6 @@ export class UserAPI extends RESTDataSource {
   }
 
   loginUser(payload) {
-    return this.post('/login', payload);
+    return this.post('/createToken', payload);
   }
 }

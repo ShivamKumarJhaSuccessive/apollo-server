@@ -2,7 +2,7 @@ import { fileLoader, mergeTypes } from 'merge-graphql-schemas';
 import path from 'path';
 
 import * as user from './user';
-import * as Mutation from './trainee';
+import * as trainee from './trainee';
 
 const typesArray = fileLoader(path.join(__dirname, './**/*.graphql'));
 
@@ -11,14 +11,15 @@ const typeDefs = mergeTypes(typesArray, { all: true });
 export default {
   resolvers: {
     Query: {
+      ...trainee.Query,
       ...user.Query,
     },
     Mutation: {
-      ...Mutation.Mutation,
+      ...trainee.Mutation,
+      ...user.Mutation
     },
     Subscription: {
-      ...Mutation.Subscription,
-
+      ...trainee.Subscription,
     },
   },
   typeDefs,

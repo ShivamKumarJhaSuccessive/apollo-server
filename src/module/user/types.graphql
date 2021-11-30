@@ -10,8 +10,12 @@ input InputCredentials {
   password: String!
 }
 
+type Token {
+  token: String!
+}
+
 type LoginUserResponse {
   message: String!
-  token: String!
-  status: User!
+  data: Token!
+  status: String!
 }
