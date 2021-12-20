@@ -8,6 +8,7 @@ import Express from 'express';
 import helmet from 'helmet';
 import methodOverride from 'method-override';
 import { ApolloServer } from 'apollo-server-express';
+import { TraineeAPI, UserAPI, userAPI } from './datasource'
 
 export default class Server {
   constructor(config) {
@@ -52,6 +53,10 @@ export default class Server {
 
     this.server = new ApolloServer({
       ...schema,
+      dataSources: () => ({
+        userAPI: new UserAPI(),
+        traineeAPI: new TraineeAPI(),
+      }),
       onHealthCheck: () => new Promise((resolve) => {
         resolve('I am OK');
       }),
